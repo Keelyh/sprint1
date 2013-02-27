@@ -4,19 +4,51 @@ block content
   h1= title
   p Welcome to #{title}
 
-  audio(src="/Someone.mp3", type= "audio/mpeg", preload="auto", id= "song")
+  audio(src="/#{song}.mp3", type= "audio/mpeg", preload="auto", id= '#{song}')
+
   div
-    input(type = "Submit", value = "play", id ="play")
-    input(type = "Submit", value = "pause", id ="pause")
+    |#{song}
+    input(type = "Submit", value = "play", id ="play#{song}")
+    input(type = "Submit", value = "pause", id ="pause#{song}")
 
+  audio(src="/#{song2}.mp3", type= "audio/mpeg", preload="auto", id= '#{song2}')
+  div
+    |#{song2}
+    input(type = "Submit", value = "play", id ="play#{song2}")
+    input(type = "Submit", value = "pause", id ="pause#{song2}")
 
+  div
+    input(type="Submit", value = "Switch", id ="switch")
 
   script
-    $('#play').click(function () {
-      $('#song')[0].play();
+    $('#switch').click(function () {
+      var switched = false
+      if ($('##{song}')[0].paused == false) {
+        $('##{song}')[0].pause()
+        $('##{song2}')[0].play()
+        switched = true
+        }
+      if ($('##{song2}')[0].paused == false && switched == false) {
+        $('##{song}')[0].play()
+        $('##{song2}')[0].pause()
+        }
     return false;
     });
-    $('#pause').click(function () {
-      $('#song')[0].pause();
+
+    $('#play#{song}').click(function () {
+      $('##{song}')[0].play();
+    return false;
+    });
+    $('#pause#{song}').click(function () {
+      $('##{song}')[0].pause();
+    return false;
+    });
+
+    $('#play#{song2}').click(function () {
+      $('##{song2}')[0].play();
+    return false;
+    });
+    $('#pause#{song2}').click(function () {
+      $('##{song2}')[0].pause();
     return false;
     });
