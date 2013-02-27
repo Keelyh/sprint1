@@ -3,14 +3,20 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  audio(controls='controls', loop = 'loop')
-    source(src='/phantomlimb.mp3', type=audio/mpeg', id = 'phantomlimb')
-  <br>
 
-  button(type='button', onclick='$(#phantomlimb)[0].play()') Play the Audio
-  button(type='button', onclick='$(#phantomlimb)[0].pause()') Pause the Audio
-  button(type='button', onclick='$(#phantomlimb)[0].volume+=0.1') Increase Volume
-  button(type='button', onclick='$(#phantomlimb)[0].volume-=0.1') Decrease Volume
+  audio(src="/Someone.mp3", type= "audio/mpeg", preload="auto", id= "song")
+  div
+    input(type = "Submit", value = "play", id ="play")
+    input(type = "Submit", value = "pause", id ="pause")
+
+
 
   script
-    $(#phantomlimb)[0].play()
+    $('#play').click(function () {
+      $('#song')[0].play();
+    return false;
+    });
+    $('#pause').click(function () {
+      $('#song')[0].pause();
+    return false;
+    });
