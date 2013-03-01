@@ -2,27 +2,26 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
 
 
   audio(src="/#{song}.mp3", type= "audio/mpeg", preload="auto", id= '#{song}')
 
   div(class = "song1")
-    |#{song}
+    h3 #{song}
     br
-    input(type = "Submit", value = "play", id ="play#{song}")
-    input(type = "Submit", value = "pause", id ="pause#{song}")
+    input(type = "Submit", class="btn btn-primary", value = "play", id ="play#{song}")
+    input(type = "Submit", class="btn btn-primary", value = "pause", id ="pause#{song}")
 
   audio(src="/#{song2}.mp3", type= "audio/mpeg", preload="auto", id= '#{song2}')
   
   div(class= "switch")
-    input(type="Submit", value = "Switch", id ="switch")
+    input(type="Submit", class="btn btn-primary", value = "Switch", id ="switch")
   
   div(class = "song2")
-    |#{song2}
+    h3 #{song2}
     br
-    input(type = "Submit", value = "play", id ="play#{song2}")
-    input(type = "Submit", value = "pause", id ="pause#{song2}")
+    input(type = "Submit", class="btn btn-primary", value = "play", id ="play#{song2}")
+    input(type = "Submit", class="btn btn-primary", value = "pause", id ="pause#{song2}")
 
 
 
