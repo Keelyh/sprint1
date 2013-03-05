@@ -16,6 +16,8 @@ block content
   
   div(class= "switch")
     input(type="Submit", class="btn btn-primary", value = "Switch", id ="switch")
+    br
+    input(type="Submit", class="btn btn-primary", value = "go to t=100!!", id = "GO")
   
   div(class = "song2")
     h3 #{song2}
@@ -23,7 +25,8 @@ block content
     input(type = "Submit", class="btn btn-primary", value = "play", id ="play#{song2}")
     input(type = "Submit", class="btn btn-primary", value = "pause", id ="pause#{song2}")
 
-
+  div(class =  "time")
+    | 0:00
 
   script
     $('#switch').click(function () {
@@ -37,6 +40,11 @@ block content
         $('##{song}')[0].play()
         $('##{song2}')[0].pause()
         }
+    return false;
+    });
+
+    $('#GO').click(function () {
+      $('##{song}')[0].currentTime = 100;
     return false;
     });
 
@@ -57,3 +65,11 @@ block content
       $('##{song2}')[0].pause();
     return false;
     });
+
+    var refreshtime = function(){
+      var nowtime = Math.round($('##{song}')[0].currentTime * 100000)/100000;
+      $('.time').html(nowtime);
+
+    }
+    
+    setInterval(refreshtime, 10);
