@@ -12,14 +12,17 @@ a {
 .switch {
 	display: inline-block;
 	padding: 50px;
+	vertical-align: bottom;
 }
 
 .song1	{
 	display: inline-block;
+	vertical-align: top;
 	padding: 50px;
 }
 
 .song2	{
 	display: inline-block;
+	vertical-align: top;
 	padding: 50px;
 }

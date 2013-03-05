@@ -9,25 +9,14 @@ block content
   div(class = "song1")
     h3 #{song}
     br
+    img(src = "/#{song}.jpg")
+    br
     input(type = "Submit", class="btn btn-primary", value = "play", id ="play#{song}")
     input(type = "Submit", class="btn btn-primary", value = "pause", id ="pause#{song}")
+    div(class =  "time")
+      | 0:00
 
-  audio(src="/#{song2}.mp3", type= "audio/mpeg", preload="auto", id= '#{song2}')
-  
-  div(class= "switch")
-    input(type="Submit", class="btn btn-primary", value = "Switch", id ="switch")
-    br
-    input(type="Submit", class="btn btn-primary", value = "go to t=100!!", id = "GO")
-  
-  div(class = "song2")
-    h3 #{song2}
-    br
-    input(type = "Submit", class="btn btn-primary", value = "play", id ="play#{song2}")
-    input(type = "Submit", class="btn btn-primary", value = "pause", id ="pause#{song2}")
 
-  div(class =  "time")
-    | 0:00
-   #{dict}
 
   script
     $('#switch').click(function () {
@@ -41,11 +30,6 @@ block content
         $('##{song}')[0].play()
         $('##{song2}')[0].pause()
         }
-    return false;
-    });
-
-    $('#GO').click(function () {
-      $('##{song}')[0].currentTime = 100;
     return false;
     });
 
@@ -68,10 +52,37 @@ block content
     });
 
     var refreshtime = function(){
-      var nowtime = Math.round($('##{song}')[0].currentTime * 100000)/100000;
-      $('.time').html(nowtime);
+      var nowtime = Math.round($('##{song}')[0].currentTime * 100)/100;
+      var strtime = nowtime.toString();
+      $('.time').html(strtime);
+
       var whatever = (!{JSON.stringify(dict)})
-      console.log(whatever)
+      if (whatever[strtime]) {
+        rand = Math.random()
+        if (rand < 0.25) {
+          chance = 0.25/(whatever[strtime].length)
+          incr_chance = chance
+          index = 0
+          for (jump in whatever[strtime]) {
+            if (rand < chance) {
+              console.log(whatever[strtime][index]);
+              $('##{song}')[0].currentTime = whatever[strtime][index] +.02;
+
+            }
+            index ++
+            chance += incr_chance
+          }
+        }
+        if(parseFloat(strtime) >= 249){
+          $('##{song}')[0].currentTime = 0;
+          $('##{song}')[0].play();
+        }
+
+        console.log("none");
+
+        
+      }
+
     }
     
-    setInterval(refreshtime, 2000);
+    setInterval(refreshtime, 10);
