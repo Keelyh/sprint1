@@ -70,8 +70,7 @@ block content
     var refreshtime = function(){
       var nowtime = Math.round($('##{song}')[0].currentTime * 100000)/100000;
       $('.time').html(nowtime);
-      var whatever = (!{JSON.stringify(dict)})
-      console.log(whatever)
+      console.log(dict['227.96993'][0])
     }
     
     setInterval(refreshtime, 2000);
