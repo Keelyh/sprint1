@@ -27,6 +27,7 @@ block content
 
   div(class =  "time")
     | 0:00
+   #{dict}
 
   script
     $('#switch').click(function () {
@@ -44,7 +45,7 @@ block content
     });
 
     $('#GO').click(function () {
-      $('##{song}')[0].currentTime = 169;
+      $('##{song}')[0].currentTime = 100;
     return false;
     });
 
@@ -69,11 +70,7 @@ block content
     var refreshtime = function(){
       var nowtime = Math.round($('##{song}')[0].currentTime * 100000)/100000;
       $('.time').html(nowtime);
-      var parse = JSON.parse(#{dict});
-      console.log(parse);
-      console.log("HELP");
-
-      
+      console.log(#{dict}['227.96993'][0])
     }
     
-    setInterval(refreshtime, 100);
+    setInterval(refreshtime, 2000);
