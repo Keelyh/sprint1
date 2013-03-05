@@ -27,6 +27,7 @@ block content
 
   div(class =  "time")
     | 0:00
+   #{dict}
 
   script
     $('#switch').click(function () {
@@ -69,7 +70,7 @@ block content
     var refreshtime = function(){
       var nowtime = Math.round($('##{song}')[0].currentTime * 100000)/100000;
       $('.time').html(nowtime);
-
+      console.log(#{dict}['227.96993'][0])
     }
     
-    setInterval(refreshtime, 10);
+    setInterval(refreshtime, 2000);
