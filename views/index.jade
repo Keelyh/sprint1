@@ -44,7 +44,7 @@ block content
     });
 
     $('#GO').click(function () {
-      $('##{song}')[0].currentTime = 100;
+      $('##{song}')[0].currentTime = 169;
     return false;
     });
 
@@ -69,7 +69,11 @@ block content
     var refreshtime = function(){
       var nowtime = Math.round($('##{song}')[0].currentTime * 100000)/100000;
       $('.time').html(nowtime);
+      var parse = JSON.parse(#{dict});
+      console.log(parse);
+      console.log("HELP");
 
+      
     }
     
-    setInterval(refreshtime, 10);
+    setInterval(refreshtime, 100);
