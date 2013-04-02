@@ -3,11 +3,13 @@
  * GET home page.
  */
 
-var scorcho = require('../PhantomLimb');
+//var scorcho = require('../PhantomLimb');
+var scorcho = require('../fullscorcho');
 
 exports.index = function(req, res){
 
-var segments = scorcho.phantom.segments;
+//var segments = scorcho.phantom.segments;
+var segments = scorcho.scorcho.segments;
 var tol = .1;
 var dict ={};
 
@@ -37,7 +39,7 @@ for(var i = 0; i< segments.length; i++){
 		dict[temp] = templist;
 	}
 }
-
-  res.render('index', { title: 'Song Mashup' , song: 'PhantomLimb', song2: 'HEHE', dict: dict});
+//PhantomLimb
+  res.render('index', { title: 'Song Mashup' , song: 'ElScorcho', song2: 'HEHE', dict: dict});
 
 };
